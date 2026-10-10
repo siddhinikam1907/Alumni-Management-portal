@@ -22,13 +22,17 @@ console.log("Cloudinary secret exists:", {
   length: process.env.CLOUDINARY_API_SECRET?.length,
 });
 const app = express();
-cors({
-  origin: [
-    "https://alumni-management-portal-1-3zz7.onrender.com",
-    "http://localhost:5173",
-  ],
-  credentials: true,
-});
+app.use(
+  cors({
+    origin: [
+      "https://alumni-management-portal-1-3zz7.onrender.com",
+      "http://localhost:5173",
+    ],
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+  }),
+);
 
 app.use(express.json());
 
