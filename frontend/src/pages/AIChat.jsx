@@ -104,20 +104,22 @@ function AIChat() {
       |
       */
 
-      const response = await fetch("http://localhost:5000/api/ai/chat", {
-        method: "POST",
-
-        headers: {
-          "Content-Type": "application/json",
+      const response = await fetch(
+        "https://alumni-management-portal-kq2c.onrender.com/api/ai/chat",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          credentials: "include",
+          body: JSON.stringify({
+            message,
+            conversationId,
+          }),
         },
+      );
 
-        credentials: "include",
-
-        body: JSON.stringify({
-          message,
-          conversationId,
-        }),
-      });
+      const data = await response.json();
 
       const data = await response.json();
 
